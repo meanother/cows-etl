@@ -1,9 +1,9 @@
+# -*- coding: utf-8 -*-
 from jira import JIRA
-import re
 from datetime import datetime
 from pytz import timezone
 from database import insert_on_conflict
-
+from config import token
 
 def convert_inserted(line):
     utc_time = datetime.strptime(line, '%Y-%m-%dT%H:%M:%S.%f%z')\
@@ -32,10 +32,9 @@ do update set
 '''
 
 
-token = 'mi2aUfOpvGmsvMvhvPgo106C'
 jiraOptions = {'server': "https://ksitemp.atlassian.net"}
 
-jira = JIRA(options=jiraOptions, basic_auth=("tega85338@gmail.com", token))
+jira = JIRA(options=jiraOptions, basic_auth=("ordinaryuser958@gmail.com", token))
 
 jql = "project = 'KBP'"
 jira_list = jira.search_issues(jql, maxResults=0)
